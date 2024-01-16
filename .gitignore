@@ -4,6 +4,7 @@ target/
 mvnw**
 **/src/main/**/target/
 **/src/test/**/target/
+.gitattributes
 
 ### STS ###
 .apt_generated
