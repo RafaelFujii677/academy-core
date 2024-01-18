@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
-import org.springframework.beans.BeanUtils;
+import org.modelmapper.ModelMapper;
 
 import br.com.academycore.core.domains.CustomerDomain;
 import br.com.academycore.core.domains.PhonesDomain;
@@ -19,14 +19,16 @@ public class CreateCustomerRequestData implements Serializable{
 	private List<PhonesDomain> phonesCustomer;
 
 	public static CreateCustomerRequestData toRequestData(CustomerDomain customerDomain) {
+		ModelMapper modelMapper = new ModelMapper();
 		CreateCustomerRequestData createCustomerRequestData = new CreateCustomerRequestData(customerDomain.getNameCustomer());
-		BeanUtils.copyProperties(customerDomain, createCustomerRequestData);
+		modelMapper.map(customerDomain, createCustomerRequestData);
 		return createCustomerRequestData;
 	}
-	
+
 	public static CustomerDomain fromRequestData(CreateCustomerRequestData createCustomerRequestData) {
+		ModelMapper modelMapper = new ModelMapper();
 		CustomerDomain customerDomain = new CustomerDomain();
-		BeanUtils.copyProperties(createCustomerRequestData, customerDomain);
+		modelMapper.map(createCustomerRequestData, customerDomain);
 		return customerDomain;
 	}
 

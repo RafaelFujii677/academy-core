@@ -3,13 +3,11 @@ package br.com.academycore.core.usecases;
 import java.io.Serializable;
 
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import br.com.academycore.core.repositories.CustomerRepository;
 import br.com.academycore.core.usecases.requests.CreateCustomerRequestData;
+import jakarta.transaction.Transactional;
 
-@Service
 public class CreateCustomer implements Serializable{
 	private static final long serialVersionUID = 1L;
 
