@@ -1,6 +1,7 @@
 package br.com.academycore.core.usercases;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.DisplayName;
@@ -24,10 +25,8 @@ public class CreateCustomerTest {
 	@DisplayName("Should show a correctly saved customer")
 	public void performSuccess() throws Exception {
 		CreateCustomerRequestData data = new CreateCustomerRequestData("João", LocalDate.of(2000, 1, 1));
-		CreateCustomerRequestData dataSaved = createCustomer.perform(data);
+		UUID idCustomer = createCustomer.perform(data);
 
-		Assert.assertNotNull(dataSaved);
-		Assert.assertEquals(data.getNameCustomer(), dataSaved.getNameCustomer());
-		Assert.assertEquals(data.getBirthdateCustomer(), dataSaved.getBirthdateCustomer());
+		Assert.assertNotNull(idCustomer);
 	}
 }

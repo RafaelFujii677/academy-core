@@ -1,6 +1,7 @@
 package br.com.academycore.core.usecases;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -18,10 +19,10 @@ public class CreateCustomer implements Serializable{
 	}
 
 	@Transactional
-	public CreateCustomerRequestData perform(CreateCustomerRequestData createCustomerRequestData) throws Exception{
+	public UUID perform(CreateCustomerRequestData createCustomerRequestData) throws Exception{
 		if(createCustomerRequestData == null) throw new Exception("Customer cannot be null.");
 		if(!StringUtils.isNotBlank(createCustomerRequestData.getNameCustomer())) throw new Exception("Customer name cannot be empty.");
 
-		return CreateCustomerRequestData.toRequestData(customerRepository.save(CreateCustomerRequestData.fromRequestData(createCustomerRequestData)));
+		return customerRepository.save(createCustomerRequestData);
 	}
 }
