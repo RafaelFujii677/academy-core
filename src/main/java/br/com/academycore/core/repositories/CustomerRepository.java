@@ -5,11 +5,10 @@ import java.util.Optional;
 import java.util.UUID;
 
 import br.com.academycore.core.domains.CustomerDomain;
-import br.com.academycore.core.usecases.requests.CreateCustomerRequestData;
 
 public interface CustomerRepository {
 
-	UUID save(CreateCustomerRequestData data);
+	UUID save(CustomerDomain customerDomain);
 	void delete(UUID idCustomer);
 
 	Optional<CustomerDomain> findOneById(UUID idCustomer);

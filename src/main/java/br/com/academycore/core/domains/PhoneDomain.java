@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "phones")
-public class PhonesDomain implements Serializable{
+public class PhoneDomain implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -21,7 +21,10 @@ public class PhonesDomain implements Serializable{
 	@Column(unique = true, nullable = false)
 	private String phone;
 
-	public PhonesDomain() { super(); }
+	public PhoneDomain() { super(); }
+	public PhoneDomain(String phone) {
+		this.phone = phone;
+	}
 
 	public UUID getIdPhone() {
 		return idPhone;

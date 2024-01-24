@@ -5,10 +5,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
-import org.modelmapper.ModelMapper;
-
-import br.com.academycore.core.domains.CustomerDomain;
-import br.com.academycore.core.domains.PhonesDomain;
+import br.com.academycore.core.domains.PhoneDomain;
 
 public class CreateCustomerRequestData implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -16,21 +13,7 @@ public class CreateCustomerRequestData implements Serializable{
 	private UUID idCustomer;
 	private String nameCustomer;
 	private LocalDate birthdateCustomer;
-	private List<PhonesDomain> phonesCustomer;
-
-	public static CreateCustomerRequestData toRequestData(CustomerDomain customerDomain) {
-		ModelMapper modelMapper = new ModelMapper();
-		CreateCustomerRequestData createCustomerRequestData = new CreateCustomerRequestData(customerDomain.getNameCustomer());
-		modelMapper.map(customerDomain, createCustomerRequestData);
-		return createCustomerRequestData;
-	}
-
-	public static CustomerDomain fromRequestData(CreateCustomerRequestData createCustomerRequestData) {
-		ModelMapper modelMapper = new ModelMapper();
-		CustomerDomain customerDomain = new CustomerDomain();
-		modelMapper.map(createCustomerRequestData, customerDomain);
-		return customerDomain;
-	}
+	private List<PhoneDomain> phonesCustomer;
 
 	public CreateCustomerRequestData(String nameCustomer) {
 		this.nameCustomer = nameCustomer;
@@ -59,10 +42,10 @@ public class CreateCustomerRequestData implements Serializable{
 	public void setBirthdateCustomer(LocalDate birthdateCustomer) {
 		this.birthdateCustomer = birthdateCustomer;
 	}
-	public List<PhonesDomain> getPhonesCustomer() {
+	public List<PhoneDomain> getPhonesCustomer() {
 		return phonesCustomer;
 	}
-	public void setPhonesCustomer(List<PhonesDomain> phonesCustomer) {
+	public void setPhonesCustomer(List<PhoneDomain> phonesCustomer) {
 		this.phonesCustomer = phonesCustomer;
 	}
 }

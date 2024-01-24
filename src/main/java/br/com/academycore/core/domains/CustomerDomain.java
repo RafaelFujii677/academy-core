@@ -11,6 +11,8 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
@@ -29,7 +31,8 @@ public class CustomerDomain implements Serializable{
 	private LocalDate birthdateCustomer;
 
 	@ManyToMany(fetch = FetchType.LAZY)
-	private List<PhonesDomain> phonesCustomer;
+	@JoinTable(name = "r_owner_phone", joinColumns = @JoinColumn(name = "idOwner", referencedColumnName = "idCustomer"), inverseJoinColumns = @JoinColumn(name = "idPhone"))
+	private List<PhoneDomain> phonesCustomer;
 
 	public CustomerDomain() { super(); }
 
@@ -51,10 +54,10 @@ public class CustomerDomain implements Serializable{
 	public void setBirthdateCustomer(LocalDate birthdateCustomer) {
 		this.birthdateCustomer = birthdateCustomer;
 	}
-	public List<PhonesDomain> getPhonesCustomer() {
+	public List<PhoneDomain> getPhonesCustomer() {
 		return phonesCustomer;
 	}
-	public void setPhonesCustomer(List<PhonesDomain> phonesCustomer) {
+	public void setPhonesCustomer(List<PhoneDomain> phonesCustomer) {
 		this.phonesCustomer = phonesCustomer;
 	}
 }
