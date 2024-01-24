@@ -1,4 +1,4 @@
-package br.com.academycore.adapters.ports.percistence;
+package br.com.academycore.adapters.ports.percistence.impl;
 
 import java.io.Serializable;
 import java.util.List;
@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import org.modelmapper.ModelMapper;
 
+import br.com.academycore.adapters.ports.percistence.CustomerRepositoryJpa;
 import br.com.academycore.core.domains.CustomerDomain;
 import br.com.academycore.core.repositories.CustomerRepository;
 import br.com.academycore.core.usecases.requests.CreateCustomerRequestData;
@@ -25,6 +26,11 @@ public class CustomerRepositoryImpl implements Serializable, CustomerRepository 
 	@Override
 	public UUID save(CreateCustomerRequestData data) {
 		return customerRepositoryJpa.save(modelMapper.map(data, CustomerDomain.class)).getIdCustomer();
+	}
+
+	@Override
+	public void delete(UUID idCustomer) {
+		customerRepositoryJpa.deleteById(idCustomer);
 	}
 
 	@Override

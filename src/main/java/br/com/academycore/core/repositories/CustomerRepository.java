@@ -10,6 +10,7 @@ import br.com.academycore.core.usecases.requests.CreateCustomerRequestData;
 public interface CustomerRepository {
 
 	UUID save(CreateCustomerRequestData data);
+	void delete(UUID idCustomer);
 
 	Optional<CustomerDomain> findOneById(UUID idCustomer);
 
