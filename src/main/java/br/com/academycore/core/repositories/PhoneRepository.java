@@ -14,5 +14,4 @@ public interface PhoneRepository {
 	Optional<PhoneDomain> findOneByPhone(String phone);
 
 	List<PhoneDomain> findAllByIdCustomer(UUID idCustomer);
-
 }

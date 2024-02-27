@@ -34,6 +34,11 @@ public class CustomerRepositoryImpl implements Serializable, CustomerRepository 
 	}
 
 	@Override
+	public List<CustomerDomain> findAllByPhone(String phone) {
+		return customerRepositoryJpa.findByPhone(phone);
+	}
+
+	@Override
 	public List<CustomerDomain> findAll() {
 		return (List<CustomerDomain>) customerRepositoryJpa.findAll();
 	}

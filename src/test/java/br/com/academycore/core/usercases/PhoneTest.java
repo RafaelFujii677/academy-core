@@ -53,11 +53,15 @@ public class PhoneTest {
 				else
 					Assert.fail("Phone saved haven't relationsip by customer");
 			}
-				
 		} catch (Exception e) {
 			e.printStackTrace();
 			Assert.fail("Error on save correctly test");
 		}
+	}
+	
+	@Test
+	@DisplayName("Should attach a exist phone with exist owner")
+	public void performSuccessAttachPhone() {
 		
 	}
 }

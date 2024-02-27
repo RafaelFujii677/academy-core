@@ -11,6 +11,7 @@ import br.com.academycore.adapters.ports.percistence.impl.CustomerRepositoryImpl
 import br.com.academycore.adapters.ports.percistence.impl.PhoneRepositoryImpl;
 import br.com.academycore.core.repositories.CustomerRepository;
 import br.com.academycore.core.repositories.PhoneRepository;
+import br.com.academycore.core.usecases.AttachOwnerPhone;
 import br.com.academycore.core.usecases.CreateAndSetOwnerPhone;
 import br.com.academycore.core.usecases.CreateCustomer;
 import br.com.academycore.core.usecases.DeleteCustomer;
@@ -43,4 +44,10 @@ public class BeansConfiguration implements Serializable{
 	CreateAndSetOwnerPhone createAndSetOwnerPhone(PhoneRepository phoneRepository, CustomerRepository customerRepository) {
 		return new CreateAndSetOwnerPhone(phoneRepository, customerRepository);
 	}
+
+	@Bean
+	AttachOwnerPhone attachOwnerPhone(PhoneRepository phoneRepository, CustomerRepository customerRepository) {
+		return new AttachOwnerPhone(phoneRepository, customerRepository);
+	}
+
 }
